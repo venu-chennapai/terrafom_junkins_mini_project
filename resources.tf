@@ -3,6 +3,6 @@ resource "aws_instance" "Jenkins_terraform" {
   instance_type = "t2.medium"
 
   tags = {
-    Name = "Jenkins_terraform""
+    Name = "Jenkins_terraform"
   }
 }
