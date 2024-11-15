@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools {
+  terraform 'Terraform'
+}
+stages () {
+    stage(' git checkout ') {
+        steps {
+            git branch: 'main', credentialsId: 'e97fb0c4-add0-4af2-ab7a-80f3bd887838', url: 'https://github.com/venugopalvarma/terrafom_junkins_mini_project.git'
+        }
+    }
+        
+    stage(' Terraform initilztion ') {
+        steps {
+            sh 'terraform init'
+        }
+    }
+    stage(' Terraform plan ') {
+        steps {
+            sh 'terraform plan'
+        }
+    }
+    stage(' Terraform porivisiong ') {
+        steps {
+            sh 'terraform apply --auto-approve'
+        }
+    }
+    
+}
+    
+}
